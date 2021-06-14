@@ -1,7 +1,9 @@
 import styled from 'styled-components';
-import { IButtonStylesProps } from './button.typings';
+
 import { COLORS } from '@styles/colors';
 import { FONT_SIZES } from '@styles/font-sizes';
+
+import { IButtonStylesProps } from './button.typings';
 
 export const ButtonStyles = styled.button<IButtonStylesProps>`
   display: block;
@@ -18,25 +20,25 @@ export const ButtonStyles = styled.button<IButtonStylesProps>`
     opacity: 0.7;
   }
 
-    ${({ variant }) => {
-      switch (variant) {
-        case 'outlined':
-          return `
+  ${({ variant }) => {
+    switch (variant) {
+      case 'outlined':
+        return `
             border: 2px solid ${COLORS[variant]};
             background-color: transparent;
             color: ${COLORS[variant]};
           `;
-        default:
-          return `
+      default:
+        return `
             border: 0;
             color: ${COLORS.white};
           `;
-      }
-    }}
+    }
+  }}
 
-    ${({ isDisabled }) => {
-      if (isDisabled) {
-        return `
+  ${({ isDisabled }) => {
+    if (isDisabled) {
+      return `
           cursor: not-allowed;
           opacity: 0.4;
 
