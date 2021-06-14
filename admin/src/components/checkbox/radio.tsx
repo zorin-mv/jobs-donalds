@@ -1,12 +1,10 @@
 import React from 'react';
 
-import { Check } from '@components/icons/check';
-
 import { ICheckBoxProps } from './checkbox.typings';
 
-import { HidenInput, Label, StyledCheckBox } from './checkbox.styles';
+import { HidenInput, Label, StyledRadio } from './checkbox.styles';
 
-export const CheckBox: React.FC<ICheckBoxProps> = ({
+export const Radio: React.FC<ICheckBoxProps> = ({
   title,
   onChange,
   isChecked,
@@ -19,7 +17,7 @@ export const CheckBox: React.FC<ICheckBoxProps> = ({
       checked={isChecked}
       disabled={isDisabled}
     />
-    <StyledCheckBox>{isChecked && <Check />}</StyledCheckBox>
+    <StyledRadio />
     {title}
   </Label>
 );
