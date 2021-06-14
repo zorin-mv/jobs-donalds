@@ -9,12 +9,12 @@ export const Button: React.FC<IButtonProps> = ({
   variant,
   isFullWidth,
 }) => (
-  <ButtonStyles.Button
+  <ButtonStyles
     isFullWidth={isFullWidth}
     variant={variant || 'default'}
     onClick={onClick}
     isDisabled={isDisabled}
   >
     {title}
-  </ButtonStyles.Button>
+  </ButtonStyles>
 );

@@ -3,21 +3,20 @@ import { IButtonStylesProps } from './button.typings';
 import { COLORS } from '@styles/colors';
 import { FONT_SIZES } from '@styles/font-sizes';
 
-export const ButtonStyles = {
-  Button: styled.button<IButtonStylesProps>`
-    display: block;
-    cursor: pointer;
-    padding: 10px;
-    min-width: ${({ isFullWidth }) => (isFullWidth ? '100%' : '100px')};
-    min-height: 40px;
-    border-radius: 5px;
-    font-size: ${FONT_SIZES.default};
-    background-color: ${({ variant }) =>
-      variant ? COLORS[variant] : COLORS.default};
+export const ButtonStyles = styled.button<IButtonStylesProps>`
+  display: block;
+  cursor: pointer;
+  padding: 10px;
+  min-width: ${({ isFullWidth }) => (isFullWidth ? '100%' : '100px')};
+  min-height: 40px;
+  border-radius: 5px;
+  font-size: ${FONT_SIZES.default};
+  background-color: ${({ variant }) =>
+    variant ? COLORS[variant] : COLORS.default};
 
-    :hover {
-      opacity: 0.7;
-    }
+  :hover {
+    opacity: 0.7;
+  }
 
     ${({ variant }) => {
       switch (variant) {
@@ -45,7 +44,6 @@ export const ButtonStyles = {
             opacity: 0.4;
           }
         `;
-      }
-    }};
-  `,
-};
+    }
+  }};
+`;
