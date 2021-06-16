@@ -6,6 +6,7 @@ import { ISelectStylesProps } from './select.typings';
 
 export const SelectWrapper = styled.div<{ isFullWidth?: boolean }>`
   width: ${({ isFullWidth }) => (isFullWidth ? '100%' : '400px')};
+  position: relative;
 `;
 
 export const SelectTitle = styled.div<ISelectStylesProps>`
@@ -41,8 +42,12 @@ export const SelectTitle = styled.div<ISelectStylesProps>`
 `;
 
 export const SelectContent = styled.div<{ maxHeight?: string }>`
-  position: relative;
+  position: absolute;
+  top: 110%;
+  left: 0;
+  right: 0;
   z-index: 1;
+  background-color: ${COLORS.white};
   padding: 15px 20px;
   box-shadow: 3px 3px 10px 6px rgba(0, 0, 0, 0.06);
   font-weight: 500;
