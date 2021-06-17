@@ -11,15 +11,18 @@ export const CheckBox: React.FC<ICheckBoxProps> = ({
   onChange,
   isChecked,
   isDisabled,
+  color,
 }) => (
-  <Label disabled={isDisabled}>
+  <Label disabled={isDisabled} color={color}>
     <HidenInput
       onChange={onChange}
       type="checkbox"
       checked={isChecked}
       disabled={isDisabled}
     />
-    <StyledCheckBox>{isChecked && <Check />}</StyledCheckBox>
+    <StyledCheckBox checked={isChecked} color={color}>
+      {isChecked && <Check />}
+    </StyledCheckBox>
     {title}
   </Label>
 );

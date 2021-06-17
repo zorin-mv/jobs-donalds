@@ -1,5 +1,3 @@
-import React from 'react';
-
 export interface ITextFieldStylesProps {
   error?: string;
   width?: string;
@@ -7,6 +5,7 @@ export interface ITextFieldStylesProps {
   isFullWidth?: boolean;
   disabled?: boolean;
   value: string;
+  placeholder?: string;
 }
 
 export interface ITextFieldProps extends ITextFieldStylesProps {

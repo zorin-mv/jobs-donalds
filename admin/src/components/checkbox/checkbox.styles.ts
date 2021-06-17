@@ -9,7 +9,7 @@ export const Label = styled.label<ICheckBoxStyledProps>`
   align-items: center;
   cursor: pointer;
 
-  ${({ disabled }) => {
+  ${({ disabled, color }) => {
     if (disabled) {
       return `
         cursor: not-allowed;
@@ -17,12 +17,14 @@ export const Label = styled.label<ICheckBoxStyledProps>`
       `;
     }
 
+    const bgColor = color || COLORS.default;
+
     return `
       &:hover {
         opacity: 0.7;
 
         ${StyledCheckBox} {
-          background-color: ${COLORS.primary};
+          background-color: ${bgColor};
         }
       }
     `;
@@ -33,7 +35,7 @@ export const HidenInput = styled.input<ICheckBoxStyledProps>`
   display: none;
 `;
 
-export const StyledCheckBox = styled.div`
+export const StyledCheckBox = styled.div<ICheckBoxStyledProps>`
   display: inline-flex;
   justify-content: center;
   align-items: center;
@@ -41,27 +43,25 @@ export const StyledCheckBox = styled.div`
   width: 30px;
   height: 30px;
   border-radius: 3px;
-  border: 2px solid ${COLORS.primary};
+  border: 2px solid ${({ color }) => (color ? color : COLORS.default)};
   background-color: transparent;
 
-  ${HidenInput}:checked + & {
-    background-color: ${COLORS.primary};
-  }
+  ${({ checked, color }) =>
+    checked &&
+    `
+    background-color: ${color ? color : COLORS.default};
+  `}
 `;
 
-export const StyledRadio = styled.div`
+export const StyledRadio = styled.div<ICheckBoxStyledProps>`
   display: inline-block;
   position: relative;
   margin-right: 7px;
   width: 30px;
   height: 30px;
   border-radius: 50%;
-  border: 2px solid ${COLORS.primary};
+  border: 2px solid ${({ color }) => (color ? color : COLORS.default)};
   background-color: transparent;
-
-  ${HidenInput}:checked + &::before {
-    background-color: ${COLORS.primary};
-  }
 
   ::before {
     content: '';
@@ -74,5 +74,8 @@ export const StyledRadio = styled.div`
     height: 20px;
     border-radius: 50%;
     background-color: transparent;
+
+    ${({ checked, color }) =>
+      checked && `background-color: ${color ? color : COLORS.default};`}
   }
 `;

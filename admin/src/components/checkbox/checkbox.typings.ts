@@ -1,6 +1,7 @@
 export interface ICheckBoxStyledProps {
   checked?: boolean;
   disabled?: boolean;
+  color?: string;
 }
 
 export interface ICheckBoxProps {
@@ -8,4 +9,5 @@ export interface ICheckBoxProps {
   onChange(): void;
   isChecked?: boolean;
   isDisabled?: boolean;
+  color?: string;
 }

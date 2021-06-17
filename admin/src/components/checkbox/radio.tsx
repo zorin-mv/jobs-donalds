@@ -9,15 +9,16 @@ export const Radio: React.FC<ICheckBoxProps> = ({
   onChange,
   isChecked,
   isDisabled,
+  color,
 }) => (
-  <Label disabled={isDisabled}>
+  <Label disabled={isDisabled} color={color}>
     <HidenInput
       onChange={onChange}
       type="checkbox"
       checked={isChecked}
       disabled={isDisabled}
     />
-    <StyledRadio />
+    <StyledRadio checked={isChecked} color={color} />
     {title}
   </Label>
 );
