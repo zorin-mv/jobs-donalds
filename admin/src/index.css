@@ -16,15 +16,3 @@ body {
 .app-wrapper {
   padding: 50px;
 }
-
-.app-wrapper > * {
-  margin-bottom: 20px;
-}
-
-.checkbox-wrapper {
-  display: flex;
-}
-
-.checkbox-wrapper > * {
-  margin: 0 20px 20px 0;
-}

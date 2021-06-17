@@ -49,9 +49,9 @@ export const Select: React.FC<ISelectProps> = ({
       {isActive && (
         <>
           <SelectContent maxHeight={maxHeight}>
-            {options.map((option, index) => (
-              <SelectItem key={index} onClick={selectedChange}>
-                {option}
+            {options.map((option) => (
+              <SelectItem key={option.id} onClick={selectedChange}>
+                {option.title}
               </SelectItem>
             ))}
           </SelectContent>

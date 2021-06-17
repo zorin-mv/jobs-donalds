@@ -13,6 +13,7 @@ export const TextField: React.FC<ITextFieldProps> = ({
   error,
   height,
   onChange,
+  placeholder,
 }) => (
   <div>
     <TextFieldWrapper
@@ -22,6 +23,7 @@ export const TextField: React.FC<ITextFieldProps> = ({
       error={error}
       height={height}
       value={value}
+      placeholder={placeholder}
     >
       {type === 'textarea' ? (
         <textarea value={value} onChange={onChange} disabled={disabled} />
@@ -33,7 +35,7 @@ export const TextField: React.FC<ITextFieldProps> = ({
           disabled={disabled}
         />
       )}
-      <label>Input text</label>
+      {placeholder && <label>{placeholder}</label>}
     </TextFieldWrapper>
     {error && (
       <ErrorBlock isFullWidth={isFullWidth} width={width} value={value}>
