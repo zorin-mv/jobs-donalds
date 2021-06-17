@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { COLORS } from '@styles/colors';
+
 export const Check: React.FC = () => (
   <svg
     version="1.1"
@@ -10,6 +12,7 @@ export const Check: React.FC = () => (
     width="20px"
     height="20px"
     viewBox="0 0 405.272 405.272"
+    fill={COLORS.white}
   >
     <g>
       <path

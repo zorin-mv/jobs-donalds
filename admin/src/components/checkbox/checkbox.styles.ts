@@ -5,7 +5,7 @@ import { COLORS } from '@styles/colors';
 import { ICheckBoxStyledProps } from './checkbox.typings';
 
 export const Label = styled.label<ICheckBoxStyledProps>`
-  display: flex;
+  display: inline-flex;
   align-items: center;
   cursor: pointer;
 
@@ -41,7 +41,7 @@ export const StyledCheckBox = styled.div`
   width: 30px;
   height: 30px;
   border-radius: 3px;
-  border: 2px solid ${COLORS.black};
+  border: 2px solid ${COLORS.primary};
   background-color: transparent;
 
   ${HidenInput}:checked + & {
@@ -50,7 +50,7 @@ export const StyledCheckBox = styled.div`
 `;
 
 export const StyledRadio = styled.div`
-  display: block;
+  display: inline-block;
   position: relative;
   margin-right: 7px;
   width: 30px;
