@@ -1,26 +1,50 @@
-import { Injectable } from '@nestjs/common';
+import { Repository } from 'typeorm';
+
+import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
 import { CreateIngredientDto } from './dto/create-ingredient.dto';
 import { UpdateIngredientDto } from './dto/update-ingredient.dto';
+import { IngredientEntity } from './entities/ingredient.entity';
 
 @Injectable()
 export class IngredientService {
-  create(createIngredientDto: CreateIngredientDto) {
-    return 'This action adds a new ingredient';
+  constructor(
+    @InjectRepository(IngredientEntity)
+    private readonly ingredientRepository: Repository<IngredientEntity>
+  ) {}
+
+  async create(
+    createIngredientDto: CreateIngredientDto
+  ): Promise<IngredientEntity> {
+    try {
+      return await this.ingredientRepository.save(createIngredientDto);
+    } catch {
+      throw new HttpException(
+        'Can not save ingredient',
+        HttpStatus.BAD_REQUEST
+      );
+    }
   }
 
-  findAll() {
-    return `This action returns all ingredient`;
+  async findAll(): Promise<IngredientEntity[]> {
+    return this.ingredientRepository.find();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} ingredient`;
+  async findOne(id: string): Promise<IngredientEntity> {
+    return this.ingredientRepository.findOne(id);
   }
 
-  update(id: number, updateIngredientDto: UpdateIngredientDto) {
-    return `This action updates a #${id} ingredient`;
+  async update(
+    id: string,
+    updateIngredientDto: UpdateIngredientDto
+  ): Promise<IngredientEntity> {
+    await this.ingredientRepository.update(id, updateIngredientDto);
+    return this.findOne(id);
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} ingredient`;
+  async remove(id: string): Promise<IngredientEntity> {
+    const removed = await this.findOne(id);
+    await this.ingredientRepository.delete(id);
+    return removed;
   }
 }
