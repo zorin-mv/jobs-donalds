@@ -31,7 +31,16 @@ export class IngredientService {
   }
 
   async findOne(id: string): Promise<IngredientEntity> {
-    return this.ingredientRepository.findOne(id);
+    const ingredient = this.ingredientRepository.findOne(id);
+
+    if (!ingredient) {
+      throw new HttpException(
+        'Burger with this id does not exist',
+        HttpStatus.NOT_FOUND
+      );
+    }
+
+    return ingredient;
   }
 
   async update(
