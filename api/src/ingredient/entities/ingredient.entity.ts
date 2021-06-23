@@ -22,7 +22,7 @@ export class IngredientEntity {
   calory: number;
 
   @Column({ default: false })
-  @ApiProperty({ example: 'true' })
+  @ApiProperty({ example: true })
   isAlergen: boolean;
 
   @OneToMany((type) => BurgerIngredientEntity, (data) => data.ingredient)
