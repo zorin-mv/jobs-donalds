@@ -13,7 +13,7 @@ export class BurgerService {
     private readonly BurgerRepository: Repository<BurgerEntity>
   ) {}
 
-  async create(createBurgerDto: CreateBurgerDto): Promise<BurgerEntity> {
+  async createBurger(createBurgerDto: CreateBurgerDto): Promise<BurgerEntity> {
     try {
       return await this.BurgerRepository.save(createBurgerDto);
     } catch {
@@ -21,11 +21,11 @@ export class BurgerService {
     }
   }
 
-  async findAll(): Promise<BurgerEntity[]> {
+  async getBurgers(): Promise<BurgerEntity[]> {
     return this.BurgerRepository.find();
   }
 
-  async findOne(id: string): Promise<BurgerEntity> {
+  async getBurger(id: string): Promise<BurgerEntity> {
     const burger = await this.BurgerRepository.findOne(id);
 
     if (!burger) {
@@ -38,16 +38,16 @@ export class BurgerService {
     return burger;
   }
 
-  async update(
+  async updateBurger(
     id: string,
     updateBurgerDto: UpdateBurgerDto
   ): Promise<BurgerEntity> {
     await this.BurgerRepository.update(id, updateBurgerDto);
-    return this.findOne(id);
+    return this.getBurger(id);
   }
 
-  async remove(id: string): Promise<BurgerEntity> {
-    const removed = await this.findOne(id);
+  async removeBurger(id: string): Promise<BurgerEntity> {
+    const removed = await this.getBurger(id);
     await this.BurgerRepository.delete(id);
     return removed;
   }

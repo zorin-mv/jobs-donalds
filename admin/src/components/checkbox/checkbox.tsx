@@ -4,7 +4,7 @@ import { Check } from '@components/icons/check';
 
 import { ICheckBoxProps } from './checkbox.typings';
 
-import { HidenInput, Label, StyledCheckBox } from './checkbox.styles';
+import { CheckboxStyled } from './checkbox.styles';
 
 export const CheckBox: React.FC<ICheckBoxProps> = ({
   title,
@@ -13,16 +13,16 @@ export const CheckBox: React.FC<ICheckBoxProps> = ({
   isDisabled,
   color,
 }) => (
-  <Label disabled={isDisabled} color={color}>
-    <HidenInput
+  <CheckboxStyled.Label disabled={isDisabled} color={color}>
+    <CheckboxStyled.HidenInput
       onChange={onChange}
       type="checkbox"
       checked={isChecked}
       disabled={isDisabled}
     />
-    <StyledCheckBox checked={isChecked} color={color}>
+    <CheckboxStyled.CheckBox checked={isChecked} color={color}>
       {isChecked && <Check />}
-    </StyledCheckBox>
+    </CheckboxStyled.CheckBox>
     {title}
-  </Label>
+  </CheckboxStyled.Label>
 );

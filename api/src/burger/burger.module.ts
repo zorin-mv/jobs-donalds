@@ -8,5 +8,6 @@ import { BurgerService } from './burger.service';
   imports: [TypeOrmModule.forFeature([BurgerEntity])],
   controllers: [BurgerController],
   providers: [BurgerService],
+  exports: [BurgerService],
 })
 export class BurgerModule {}
