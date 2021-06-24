@@ -2,7 +2,7 @@ import React from 'react';
 
 import { ITextFieldProps } from './text-field.typings';
 
-import { ErrorBlock, TextFieldWrapper } from './text-field.styles';
+import { TextFieldStyled } from './text-field.styles';
 
 export const TextField: React.FC<ITextFieldProps> = ({
   width,
@@ -16,7 +16,7 @@ export const TextField: React.FC<ITextFieldProps> = ({
   placeholder,
 }) => (
   <div>
-    <TextFieldWrapper
+    <TextFieldStyled.Wrapper
       width={width}
       isFullWidth={isFullWidth}
       disabled={disabled}
@@ -36,11 +36,15 @@ export const TextField: React.FC<ITextFieldProps> = ({
         />
       )}
       {placeholder && <label>{placeholder}</label>}
-    </TextFieldWrapper>
+    </TextFieldStyled.Wrapper>
     {error && (
-      <ErrorBlock isFullWidth={isFullWidth} width={width} value={value}>
+      <TextFieldStyled.ErrorBlock
+        isFullWidth={isFullWidth}
+        width={width}
+        value={value}
+      >
         {error}
-      </ErrorBlock>
+      </TextFieldStyled.ErrorBlock>
     )}
   </div>
 );

@@ -2,9 +2,7 @@ import React, { MouseEvent, useEffect, useState } from 'react';
 
 import { ISelectProps } from './select.typings';
 
-import {
-    SelectBackDrop, SelectContent, SelectItem, SelectTitle, SelectWrapper
-} from './select.styles';
+import { SelectStyled } from './select.styles';
 
 export const Select: React.FC<ISelectProps> = ({
   options,
@@ -37,27 +35,27 @@ export const Select: React.FC<ISelectProps> = ({
   }, []);
 
   return (
-    <SelectWrapper isFullWidth={isFullWidth}>
-      <SelectTitle
+    <SelectStyled.Wrapper isFullWidth={isFullWidth}>
+      <SelectStyled.Title
         onClick={toggleActive}
         isDisabled={isDisabled}
         isActive={isActive}
       >
         {selected}
         <i></i>
-      </SelectTitle>
+      </SelectStyled.Title>
       {isActive && (
         <>
-          <SelectContent maxHeight={maxHeight}>
+          <SelectStyled.Content maxHeight={maxHeight}>
             {options.map((option) => (
-              <SelectItem key={option.id} onClick={selectedChange}>
+              <SelectStyled.Item key={option.id} onClick={selectedChange}>
                 {option.title}
-              </SelectItem>
+              </SelectStyled.Item>
             ))}
-          </SelectContent>
-          <SelectBackDrop onClick={toggleActive} />
+          </SelectStyled.Content>
+          <SelectStyled.BackDrop onClick={toggleActive} />
         </>
       )}
-    </SelectWrapper>
+    </SelectStyled.Wrapper>
   );
 };
