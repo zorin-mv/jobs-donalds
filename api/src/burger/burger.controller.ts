@@ -17,7 +17,7 @@ export class BurgerController {
   @HttpCode(HttpStatus.CREATED)
   @Post()
   create(@Body() createBurgerDto: CreateBurgerDto) {
-    return this.burgerService.create(createBurgerDto);
+    return this.burgerService.createBurger(createBurgerDto);
   }
 
   @ApiOperation({ summary: 'Geting all Burgers' })
@@ -29,7 +29,7 @@ export class BurgerController {
   @HttpCode(HttpStatus.OK)
   @Get()
   findAll() {
-    return this.burgerService.findAll();
+    return this.burgerService.getBurgers();
   }
 
   @ApiOperation({ summary: 'Geting one Burger' })
@@ -37,7 +37,7 @@ export class BurgerController {
   @HttpCode(HttpStatus.OK)
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.burgerService.findOne(id);
+    return this.burgerService.getBurger(id);
   }
 
   @ApiOperation({ summary: 'Updating Burger' })
@@ -45,7 +45,7 @@ export class BurgerController {
   @HttpCode(HttpStatus.OK)
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateBurgerDto: UpdateBurgerDto) {
-    return this.burgerService.update(id, updateBurgerDto);
+    return this.burgerService.updateBurger(id, updateBurgerDto);
   }
 
   @ApiOperation({ summary: 'Deleting Burger' })
@@ -53,6 +53,6 @@ export class BurgerController {
   @HttpCode(HttpStatus.OK)
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.burgerService.remove(id);
+    return this.burgerService.removeBurger(id);
   }
 }
