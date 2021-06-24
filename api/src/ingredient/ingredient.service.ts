@@ -13,7 +13,7 @@ export class IngredientService {
     private readonly ingredientRepository: Repository<IngredientEntity>
   ) {}
 
-  async create(
+  async createIngredient(
     createIngredientDto: CreateIngredientDto
   ): Promise<IngredientEntity> {
     try {
@@ -26,11 +26,11 @@ export class IngredientService {
     }
   }
 
-  async findAll(): Promise<IngredientEntity[]> {
+  async getIngredients(): Promise<IngredientEntity[]> {
     return this.ingredientRepository.find();
   }
 
-  async findOne(id: string): Promise<IngredientEntity> {
+  async getIngredient(id: string): Promise<IngredientEntity> {
     const ingredient = this.ingredientRepository.findOne(id);
 
     if (!ingredient) {
@@ -43,16 +43,16 @@ export class IngredientService {
     return ingredient;
   }
 
-  async update(
+  async updateIngredient(
     id: string,
     updateIngredientDto: UpdateIngredientDto
   ): Promise<IngredientEntity> {
     await this.ingredientRepository.update(id, updateIngredientDto);
-    return this.findOne(id);
+    return this.getIngredient(id);
   }
 
-  async remove(id: string): Promise<IngredientEntity> {
-    const removed = await this.findOne(id);
+  async removeIngredient(id: string): Promise<IngredientEntity> {
+    const removed = await this.getIngredient(id);
     await this.ingredientRepository.delete(id);
     return removed;
   }

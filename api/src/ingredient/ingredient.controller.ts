@@ -17,7 +17,7 @@ export class IngredientController {
   @HttpCode(HttpStatus.CREATED)
   @Post()
   create(@Body() createIngredientDto: CreateIngredientDto) {
-    return this.ingredientService.create(createIngredientDto);
+    return this.ingredientService.createIngredient(createIngredientDto);
   }
 
   @ApiOperation({ summary: 'Geting all ingredients' })
@@ -29,7 +29,7 @@ export class IngredientController {
   @HttpCode(HttpStatus.OK)
   @Get()
   findAll() {
-    return this.ingredientService.findAll();
+    return this.ingredientService.getIngredients();
   }
 
   @ApiOperation({ summary: 'Geting one ingredient' })
@@ -37,7 +37,7 @@ export class IngredientController {
   @HttpCode(HttpStatus.OK)
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.ingredientService.findOne(id);
+    return this.ingredientService.getIngredient(id);
   }
 
   @ApiOperation({ summary: 'Updating ingredient' })
@@ -49,7 +49,7 @@ export class IngredientController {
     @Param('id') id: string,
     @Body() updateIngredientDto: UpdateIngredientDto
   ) {
-    return this.ingredientService.update(id, updateIngredientDto);
+    return this.ingredientService.updateIngredient(id, updateIngredientDto);
   }
 
   @ApiOperation({ summary: 'Deleting ingredient' })
@@ -57,6 +57,6 @@ export class IngredientController {
   @HttpCode(HttpStatus.OK)
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.ingredientService.remove(id);
+    return this.ingredientService.removeIngredient(id);
   }
 }

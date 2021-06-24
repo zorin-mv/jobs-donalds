@@ -14,9 +14,13 @@ export class BurgerIngredientEntity {
   @Column()
   isCustom: boolean;
 
-  @ManyToOne((type) => BurgerEntity, (data) => data.ingredients)
+  @ManyToOne((type) => BurgerEntity, (data) => data.ingredients, {
+    onDelete: 'CASCADE',
+  })
   burger: BurgerEntity;
 
-  @ManyToOne((type) => IngredientEntity, (data) => data.burgers)
+  @ManyToOne((type) => IngredientEntity, (data) => data.burgers, {
+    onDelete: 'CASCADE',
+  })
   ingredient: IngredientEntity;
 }
