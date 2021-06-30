@@ -51,6 +51,7 @@ export const TextFieldStyled = {
       left: 10px;
       padding: 2px;
       transition: 0.3s;
+      pointer-events: none;
 
       ${({ value }) => value && `top: -12px`}
     }

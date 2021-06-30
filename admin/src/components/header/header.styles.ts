@@ -5,7 +5,7 @@ import { COLORS } from '@styles/colors';
 
 export const HeaderStyled = {
   HeaderWrapper: styled.div`
-    padding: 15px 0;
+    padding: 15px 20px;
     box-shadow: 0px 5px 8px 0px rgba(34, 60, 80, 0.19);
   `,
 

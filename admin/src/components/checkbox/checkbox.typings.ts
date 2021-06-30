@@ -6,8 +6,10 @@ export interface ICheckBoxStyledProps {
 
 export interface ICheckBoxProps {
   title: string;
-  onChange(): void;
+  onChange(e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>): void;
+  onBlur?(e: React.FocusEvent<HTMLInputElement>): void;
   isChecked?: boolean;
   isDisabled?: boolean;
   color?: string;
+  name: string;
 }
