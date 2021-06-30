@@ -27,6 +27,9 @@ export class BurgerEntity {
   @Column({ default: 0 })
   rating: number;
 
+  @Column()
+  price: number;
+
   @CreateDateColumn()
   time_create: Date;
 
