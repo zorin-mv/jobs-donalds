@@ -14,6 +14,8 @@ export const TextField: React.FC<ITextFieldProps> = ({
   height,
   onChange,
   placeholder,
+  name,
+  onBlur,
 }) => (
   <div>
     <TextFieldStyled.Wrapper
@@ -26,13 +28,21 @@ export const TextField: React.FC<ITextFieldProps> = ({
       placeholder={placeholder}
     >
       {type === 'textarea' ? (
-        <textarea value={value} onChange={onChange} disabled={disabled} />
+        <textarea
+          value={value}
+          onChange={onChange}
+          disabled={disabled}
+          name={name}
+          onBlur={onBlur}
+        />
       ) : (
         <input
           type={type}
           value={value}
           onChange={onChange}
           disabled={disabled}
+          name={name}
+          onBlur={onBlur}
         />
       )}
       {placeholder && <label>{placeholder}</label>}

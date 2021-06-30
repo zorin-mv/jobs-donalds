@@ -9,4 +9,7 @@ export interface IButtonStylesProps {
 export interface IButtonProps extends IButtonStylesProps {
   title: string;
   onClick(): void;
+  type?: TByttonTypes;
 }
+
+type TByttonTypes = 'button' | 'submit' | 'reset';
