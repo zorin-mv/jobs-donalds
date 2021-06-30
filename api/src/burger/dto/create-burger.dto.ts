@@ -10,5 +10,8 @@ export class CreateBurgerDto {
   @IsNotEmpty()
   description: string;
   @ApiProperty()
+  @IsNotEmpty()
+  price: number;
+  @ApiProperty()
   image: string;
 }
