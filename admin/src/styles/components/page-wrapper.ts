@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
 export const PageWrapper = styled.div`
+  position: relative;
   display: flex;
-  padding: 50px 20px;
-  height: 90vh;
+  padding: 50px 100px;
   overflow: hidden;
 `;

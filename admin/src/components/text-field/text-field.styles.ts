@@ -42,6 +42,7 @@ export const TextFieldStyled = {
     input:focus + label,
     textarea:focus + label {
       top: -12px;
+      color: ${COLORS.default};
     }
 
     label {
@@ -52,6 +53,7 @@ export const TextFieldStyled = {
       padding: 2px;
       transition: 0.3s;
       pointer-events: none;
+      color: ${COLORS.grey};
 
       ${({ value }) => value && `top: -12px`}
     }
