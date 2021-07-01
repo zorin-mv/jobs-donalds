@@ -13,6 +13,9 @@ export interface IIngredientFormProps extends Partial<IIngredientValues> {
     values: IIngredientValues,
     { resetForm }: FormikHelpers<IIngredientValues>
   ): void;
+  onUpdate(id: string, body: ICreateIngredient): Promise<IIngredient>;
+  isEdit: boolean;
+  id?: string;
 }
 
 export const IngredientFormSchema = yup.object().shape({

@@ -9,27 +9,37 @@ import { TextField } from '@components/text-field';
 import { COLORS } from '@styles/colors';
 import { SpacerStyled } from '@styles/components';
 
+import { PROMISES_AREA } from '@constants/promises-area';
+
 import { IIngredientFormProps, IngredientFormSchema } from './ingredient-form.typings';
 
 import { IngredientFormStyles } from './ingredient-form.styles';
 
 export const IngredientForm: React.FC<IIngredientFormProps> = ({
-  name,
-  image,
-  isAlergen,
-  calory,
+  onUpdate,
   onSubmit,
+  name = '',
+  image = '',
+  isAlergen = false,
+  calory = '',
+  id,
+  isEdit,
 }) => (
   <Formik
     initialValues={{
-      name: name || '',
-      image: image || '',
-      isAlergen: isAlergen || false,
-      calory: calory || '',
+      name,
+      image,
+      isAlergen,
+      calory,
     }}
     validateOnBlur
-    onSubmit={onSubmit}
+    onSubmit={
+      isEdit
+        ? (values) => onUpdate(id!, { ...values, calory: +values.calory })
+        : onSubmit
+    }
     validationSchema={IngredientFormSchema}
+    enableReinitialize
   >
     {({
       values,
@@ -86,7 +96,7 @@ export const IngredientForm: React.FC<IIngredientFormProps> = ({
           />
         </SpacerStyled>
         <SpacerStyled paddingY="3">
-          <Loader color={COLORS.primary} area="add-ingredient">
+          <Loader color={COLORS.primary} area={PROMISES_AREA.addIngredient}>
             <Button
               title="Submit"
               onClick={handleSubmit}

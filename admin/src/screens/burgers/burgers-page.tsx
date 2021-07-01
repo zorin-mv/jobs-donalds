@@ -13,7 +13,7 @@ export const BurgersPage: React.FC = () => {
   return (
     <PageWrapper>
       <div>Burgers page is active</div>
-      <FormWrapper isActive={active} onClick={toggleActive} />
+      <FormWrapper onClick={toggleActive} />
     </PageWrapper>
   );
 };
