@@ -11,7 +11,7 @@ export const SelectStyled = {
   `,
   Title: styled.div<ISelectStylesProps>`
     position: relative;
-    z-index: 1;
+    z-index: 5;
     padding: 15px 20px;
     margin-bottom: 5px;
     box-shadow: 3px 3px 10px 6px rgba(0, 0, 0, 0.06);
@@ -45,7 +45,7 @@ export const SelectStyled = {
     top: 110%;
     left: 0;
     right: 0;
-    z-index: 1;
+    z-index: 5;
     background-color: ${COLORS.white};
     padding: 15px 20px;
     box-shadow: 3px 3px 10px 6px rgba(0, 0, 0, 0.06);

@@ -12,7 +12,6 @@ import { IListProps } from './list.typings';
 import { ListStyles } from './list.styles';
 
 export const List: React.FC<IListProps> = ({
-  isActive,
   onClick,
   list,
   onItemClick,
@@ -28,16 +27,16 @@ export const List: React.FC<IListProps> = ({
     };
 
   return (
-    <ListStyles.Wrapper isActive={isActive}>
+    <ListStyles.Wrapper>
       <ListStyles.Title>List of {title}</ListStyles.Title>
       <ListStyles.Header>
         <div>Name</div>
-        <div>Calory</div>
+        <div>{title === 'Burgers' ? 'Price' : 'Calory'}</div>
         <div>Image</div>
         <ListStyles.DeleteIcon />
       </ListStyles.Header>
       <ListStyles.List>
-        <Loader area={PROMISES_AREA.getIngredients}>
+        <Loader area={PROMISES_AREA.getList}>
           {list.map(({ id, title, digit, image }) => (
             <ListStyles.ListItem key={id} onClick={clickHandler(id)}>
               <div>{title}</div>

@@ -1,6 +1,6 @@
 import React, { MouseEvent, useEffect, useState } from 'react';
 
-import { ISelectProps } from './select.typings';
+import { ISelectOption, ISelectProps } from './select.typings';
 
 import { SelectStyled } from './select.styles';
 
@@ -16,8 +16,11 @@ export const Select: React.FC<ISelectProps> = ({
 
   const toggleActive = () => !isDisabled && setIsActive(!isActive);
 
-  const selectedChange = (e: MouseEvent<HTMLDivElement>) => {
-    setSelected((e.target as Element).textContent || selected);
+  const selectedChange = (e: MouseEvent<HTMLDivElement>, id: string) => {
+    setSelected({
+      name: (e.target as Element).textContent || selected.name,
+      id,
+    });
     toggleActive();
   };
 
@@ -26,6 +29,13 @@ export const Select: React.FC<ISelectProps> = ({
       setIsActive(false);
     }
   };
+
+  const newOptions: ISelectOption[] = options.filter(
+    (option) => option.name !== selected.name
+  );
+
+  const clickHandler = (id: string) => (e: MouseEvent<HTMLDivElement>) =>
+    selectedChange(e, id);
 
   useEffect(() => {
     document.addEventListener('keydown', escPress);
@@ -41,15 +51,15 @@ export const Select: React.FC<ISelectProps> = ({
         isDisabled={isDisabled}
         isActive={isActive}
       >
-        {selected}
-        <i></i>
+        {selected.name}
+        <i />
       </SelectStyled.Title>
       {isActive && (
         <>
           <SelectStyled.Content maxHeight={maxHeight}>
-            {options.map((option) => (
-              <SelectStyled.Item key={option.id} onClick={selectedChange}>
-                {option.title}
+            {newOptions.map(({ id, name }) => (
+              <SelectStyled.Item key={id} onClick={clickHandler(id)}>
+                {name}
               </SelectStyled.Item>
             ))}
           </SelectStyled.Content>

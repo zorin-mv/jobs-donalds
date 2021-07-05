@@ -5,13 +5,13 @@ export interface ISelectStylesProps {
 
 export interface ISelectProps extends ISelectStylesProps {
   options: ISelectOption[];
-  selected: string;
-  setSelected: React.Dispatch<React.SetStateAction<string>>;
+  selected: ISelectOption;
+  setSelected: React.Dispatch<React.SetStateAction<ISelectOption>>;
   maxHeight?: string;
   isFullWidth?: boolean;
 }
 
 export interface ISelectOption {
-  title: string;
+  name: string;
   id: string;
 }
