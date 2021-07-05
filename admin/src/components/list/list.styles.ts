@@ -3,12 +3,13 @@ import styled from 'styled-components';
 import { COLORS } from '@styles/colors';
 
 export const ListStyles = {
-  Wrapper: styled.div<{ isActive: boolean }>`
+  Wrapper: styled.div`
     width: 50%;
     padding: 20px 0;
     transition: 0.3s;
     box-shadow: 3px 3px 10px 6px rgba(0, 0, 0, 0.06);
     border-radius: 5px;
+    height: max-content;
   `,
   Title: styled.div`
     font-size: 2em;
@@ -39,7 +40,7 @@ export const ListStyles = {
 
   List: styled.div`
     overflow-y: scroll;
-    max-height: 550px;
+    max-height: 585px;
     margin-bottom: 20px;
   `,
 

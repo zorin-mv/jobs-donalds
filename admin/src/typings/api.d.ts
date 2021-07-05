@@ -1,11 +1,14 @@
-interface IBurger {
-  id?: string;
+interface ICreateBurger {
   name: string;
   description: string;
   image: string;
-  rating: number;
   price: number;
+}
+
+interface IBurger extends ICreateBurger {
+  id: string;
   time_create: Date;
+  rating: number;
 }
 
 interface ICreateIngredient {
@@ -17,4 +20,19 @@ interface ICreateIngredient {
 
 interface IIngredient extends ICreateIngredient {
   id: string;
+}
+
+interface IUpdateIngredientInBurger {
+  count: number | string;
+  isCustom: boolean;
+}
+
+interface ICreateIngredientInBurger extends IUpdateIngredientInBurger {
+  ingredientId: string;
+  burgerId: string;
+}
+
+interface IIngredientInBurger extends ICreateIngredientInBurger {
+  id: string;
+  ingredient: IIngredient;
 }

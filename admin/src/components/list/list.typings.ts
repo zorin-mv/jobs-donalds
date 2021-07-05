@@ -1,12 +1,11 @@
 import { AxiosResponse } from 'axios';
 
 export interface IListProps {
-  isActive: boolean;
   onClick(): void;
   onItemClick: (id: string) => void;
   list: IListItem[];
   title: string;
-  onRemove(id: string): Promise<AxiosResponse<IIngredient>>;
+  onRemove(id: string): Promise<AxiosResponse<IIngredient | IBurger>>;
 }
 
 interface IListItem {

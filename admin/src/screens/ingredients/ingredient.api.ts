@@ -6,6 +6,9 @@ export const createIngredient = (data: ICreateIngredient) =>
 
 export const getIngredients = () => GET<IIngredient[]>(END_POINTS.ingredients);
 
+export const getIngredient = (id: string) =>
+  GET<IIngredient>(`${END_POINTS.ingredients}/${id}`);
+
 export const deleteIngredient = (id: string) =>
   DELETE<IIngredient>(`${END_POINTS.ingredients}/${id}`);
 

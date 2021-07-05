@@ -5,4 +5,5 @@ export const PageWrapper = styled.div`
   display: flex;
   padding: 50px 100px;
   overflow: hidden;
+  min-height: 90vh;
 `;

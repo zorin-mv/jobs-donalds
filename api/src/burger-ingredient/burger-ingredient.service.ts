@@ -24,17 +24,16 @@ export class BurgerIngredientService {
     burgerId,
     ingredientId,
   }: CreateBurgerIngredientDto) {
-    await this.burgerService.getBurger(burgerId);
-    await this.ingredientService.getIngredient(ingredientId);
+    const burger = await this.burgerService.getBurger(burgerId);
+    const ingredient = await this.ingredientService.getIngredient(ingredientId);
 
-    const ingredientInCurrentBurger =
-      await this.burgerIngredientRepository.findOne({
-        where: {
-          ingredient: {
-            id: ingredientId,
-          },
-        },
-      });
+    const ingredientsInBurger = await this.getIngredientForBurgers({
+      burgerId,
+    });
+
+    const ingredientInCurrentBurger = ingredientsInBurger.find(
+      (item) => item.ingredient.id === ingredientId
+    );
 
     if (ingredientInCurrentBurger) {
       throw new HttpException(
@@ -43,11 +42,11 @@ export class BurgerIngredientService {
       );
     }
 
-    await this.burgerIngredientRepository.save({
+    return this.burgerIngredientRepository.save({
       isCustom,
       count,
-      burger: await this.burgerService.getBurger(burgerId),
-      ingredient: await this.ingredientService.getIngredient(ingredientId),
+      burger,
+      ingredient,
     });
   }
 
@@ -64,7 +63,12 @@ export class BurgerIngredientService {
   }
 
   async getIngredientForBurger(id: string) {
-    return this.burgerIngredientRepository.findOne(id);
+    return this.burgerIngredientRepository.findOne({
+      where: {
+        id,
+      },
+      relations: ['ingredient', 'burger'],
+    });
   }
 
   async updateIngredientForBurger(
