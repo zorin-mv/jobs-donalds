@@ -13,6 +13,8 @@ export const ScreenStyles = {
     padding-top: ${({ paddingTop }) => paddingTop}px;
     padding-bottom: ${({ paddingBottom }) => paddingBottom}px;
     flex: 1;
+    padding-left: 15px;
+    padding-right: 15px;
     ${backgroundProp}
     ${isCenteredProp}
   `,
